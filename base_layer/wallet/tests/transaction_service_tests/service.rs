@@ -158,7 +158,7 @@ use tari_key_manager::{
     cipher_seed::CipherSeed,
     key_manager_service::{storage::sqlite_db::KeyManagerSqliteDatabase, KeyId, KeyManagerInterface},
 };
-use tari_p2p::{comms_connector::pubsub_connector, domain_message::DomainMessage, Network};
+use tari_p2p::{comms_connector::pubsub_connector, message::DomainMessage, Network};
 use tari_script::{inputs, push_pubkey_script, script, ExecutionStack};
 use tari_service_framework::{reply_channel, RegisterHandle, StackBuilder};
 use tari_shutdown::{Shutdown, ShutdownSignal};
@@ -410,7 +410,6 @@ async fn setup_transaction_service_no_comms(
     let test_config = config.unwrap_or(TransactionServiceConfig {
         broadcast_monitoring_timeout: Duration::from_secs(5),
         chain_monitoring_timeout: Duration::from_secs(5),
-        direct_send_timeout: Duration::from_secs(5),
         broadcast_send_timeout: Duration::from_secs(5),
         low_power_polling_timeout: Duration::from_secs(6),
         transaction_resend_period: Duration::from_secs(200),
